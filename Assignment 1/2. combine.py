@@ -17,7 +17,7 @@ combined_rows = []
 
 # Iterate through each row in the dataset
 for _, row in data.iterrows():
-    following_vehicle_id = row['Following']
+    following_vehicle_id = row['Preceding']
     
     # Check if the Following ID exists in the Vehicle_ID column
     leader_row = data[data['Vehicle_ID'] == following_vehicle_id]
@@ -55,6 +55,6 @@ print("Column names in the dataset:")
 
 print(combined_data.columns.tolist())
 ## Save the combined dataset to a new CSV file
-#output_file_path = r'combined_dataset.csv'
-#combined_data.to_csv(output_file_path, index=False)
-#print(f"Combined dataset saved to {output_file_path}")
+output_file_path = r'combined_dataset.csv'
+combined_data.to_csv(output_file_path, index=False)
+print(f"Combined dataset saved to {output_file_path}")

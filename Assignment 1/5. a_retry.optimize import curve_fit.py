@@ -11,6 +11,7 @@ data = pd.read_csv(csv_file_path)
 
 # Filter out rows where X3 is zero
 data = data[data['X3'] != 0]
+#data = data[data['Y'] != 0]
 
 # Prepare the independent and dependent variables
 X1 = data['X1'].values  # Convert to numpy array for compatibility
@@ -21,13 +22,18 @@ Y = data['Y'].values
 # Define a nonlinear model
 def nonlinear_model_density(X, a0, m, l):
     X1, X2, X3 = X  # Unpack independent variables
-    return a0 * X1**m * (X2 / X3**l)
+    return  (a0) * X1**m * (X2 / X3**l)
 
 # Stack independent variables for curve_fit
 X = np.vstack((X1, X2, X3))
 
 # Initial guesses for parameters [a0, m, l]
-initial_guesses = [8, 3, 5]
+initial_guesses = [5, 1, 2]
+initial_guesses = [-0.1, 1, 2]
+initial_guesses = [-0.1, .2, 2]
+initial_guesses = [-0.1, .15, 2]
+initial_guesses = [0.1,1.44, -1.13]
+initial_guesses = [-0.1,.2, 2]
 
 # Fit the nonlinear model using curve_fit
 params, covariance = curve_fit(nonlinear_model_density, X, Y, p0=initial_guesses)
@@ -36,7 +42,7 @@ params, covariance = curve_fit(nonlinear_model_density, X, Y, p0=initial_guesses
 a0, m, l = params
 
 # Print the results
-print(f"Optimized Parameters:\n a0: {a0:.4f}, m: {m:.4f}, l: {l:.4f}")
+print(f"Optimized Parameters:\n a0: {a0}, m: {m:.4f}, l: {l:.4f}")
 
 # Calculate fitted values (predictions)
 Y_fitted = nonlinear_model_density(X, *params)

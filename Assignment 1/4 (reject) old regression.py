@@ -12,26 +12,26 @@ csv_file_path = r'updated_dataset.csv'
 data = pd.read_csv(csv_file_path)
 
 # Check the minimum value for each column to decide the shift
-min_Y = data['Y'].min()
-min_X1 = data['X1'].min()
-min_X2 = data['X2'].min()
-min_X3 = data['X3'].min()
+#min_Y = data['Y'].min()
+#min_X1 = data['X1'].min()
+#min_X2 = data['X2'].min()
+#min_X3 = data['X3'].min()
 
 # Calculate the shift constant
-shift_constant = max(0, -min_Y, -min_X1, -min_X2, -min_X3) + 1  # Add 1 to ensure no zero values
-print("shift constant: ", shift_constant)
+#shift_constant = max(0, -min_Y, -min_X1, -min_X2, -min_X3) + 1  # Add 1 to ensure no zero values
+#print("shift constant: ", shift_constant)
 
 # Shift all columns
-data['Y'] += shift_constant
-data['X1'] += shift_constant
-data['X2'] += shift_constant
-data['X3'] += shift_constant
+#data['Y'] += shift_constant
+#data['X1'] += shift_constant
+#data['X2'] += shift_constant
+#data['X3'] += shift_constant
 
 # Now apply the natural log transformation
-data['ln_Y'] = np.log(data['Y'])
-data['ln_X1'] = np.log(data['X1'])
-data['ln_X2'] = np.log(data['X2'])
-data['ln_X3'] = np.log(data['X3'])
+#data['ln_Y'] = np.log(data['Y'])
+#data['ln_X1'] = np.log(data['X1'])
+#data['ln_X2'] = np.log(data['X2'])
+#data['ln_X3'] = np.log(data['X3'])
 
 # Check for missing values or infinities after the transformation
 print(data.isna().sum())  # Count NaNs

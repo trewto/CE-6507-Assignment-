@@ -4,7 +4,7 @@ import seaborn as sns
 import pandas as pd
 
 # Import CSV file
-csv_file_path = r'combined_dataset.csv'
+csv_file_path = r'2. combined_dataset.csv'
 data = pd.read_csv(csv_file_path)
 
 # Display the first few rows of the dataframe
@@ -28,8 +28,8 @@ data['X1'] = data['v_Vel']
 data['X2'] = data['leader_v_Vel'] - data['v_Vel']
 
 # X3 = Euclidean distance between the current vehicle and the leader vehicle
-data['X3'] = np.sqrt((data['Global_X'] - data['leader_Global_X'])**2 + (data['Global_Y'] - data['leader_Global_Y'])**2)
-
+#data['X3'] = np.sqrt((data['Global_X'] - data['leader_Global_X'])**2 + (data['Global_Y'] - data['leader_Global_Y'])**2)
+data['X3'] = data['Space_Headway']
 # Display the updated dataframe
 print("Updated Dataset with new columns:")
 print(data[['Y', 'X1', 'X2', 'X3']].head())

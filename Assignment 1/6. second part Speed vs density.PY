@@ -6,7 +6,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Import CSV file
-csv_file_path = r'combined_dataset.csv'
+csv_file_path = r'2. combined_dataset.csv'
 data = pd.read_csv(csv_file_path)
 data = data[data['Space_Headway'] != 0]
 
@@ -27,13 +27,13 @@ print(X_density)
 # Define a nonlinear model (e.g., power law: Speed = a * Density^b)
 def nonlinear_model_density(X, a, b):
     #return a * np.log(X / b)
-    return a * np.log(X / b)
+    return a * np.log(b/X)
     return  a * ( 1 - X / b )
     return a * (X**b)
 
 
 # Fit the nonlinear model using curve fitting
-params, covariance = curve_fit(nonlinear_model_density, X_density, Y_speed, p0=[-0.02,10])
+params, covariance = curve_fit(nonlinear_model_density, X_density, Y_speed, p0=[2,5])
 
 # Extract the optimized parameters
 a, b = params

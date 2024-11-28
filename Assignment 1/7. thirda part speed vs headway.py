@@ -6,7 +6,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Import CSV file
-csv_file_path = r'combined_dataset.csv'
+csv_file_path = r'2. combined_dataset.csv'
 data = pd.read_csv(csv_file_path)
 data = data[data['Space_Headway'] != 0]
 
@@ -40,7 +40,7 @@ params, covariance = curve_fit(nonlinear_model_density, X_headway, Y_speed, p0=[
 a, b = params
 
 # Print the results
-print(f"Nonlinear Model: a =  {a} ,b =  {b}")
+print(f" Model: a =  {a} ,b =  {b}")
 
 # Calculate the fitted values (predictions)
 Y_fitted_density_nl = nonlinear_model_density(X_headway, *params)
