@@ -6,7 +6,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Import CSV file
-csv_file_path = r'2. combined_dataset.csv'
+csv_file_path = r'combined_dataset.csv'
 data = pd.read_csv(csv_file_path)
 data = data[data['Space_Headway'] != 0]
 

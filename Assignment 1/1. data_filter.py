@@ -13,14 +13,14 @@ print(data.head())
 
 
 # Filter the dataset for the specified conditions
-filtered_data = data[(data['Lane_ID'] == 2) & (data['v_Class'] == 2) & (data['Location'] == "us-101") & (data['Following'] != 0)]
+filtered_data = data[(data['Lane_ID'] == 2) & (data['v_Class'] == 2) & (data['Location'] == "us-101") & (data['Preceding'] != 0)]
 
 
 # Remove duplicate rows
 filtered_data_no_duplicates = filtered_data.drop_duplicates()
 
 # Select the top 500 rows from the deduplicated data
-filtered_top_500 = filtered_data_no_duplicates.head(1000)
+filtered_top_500 = filtered_data_no_duplicates.head(30000)
 
 # Save the filtered dataset to a new CSV file
 output_file_path = r'dataset.csv'

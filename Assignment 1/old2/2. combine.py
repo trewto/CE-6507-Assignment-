@@ -18,11 +18,9 @@ combined_rows = []
 # Iterate through each row in the dataset
 for _, row in data.iterrows():
     following_vehicle_id = row['Preceding']
-    current_frame_id =  row['Frame_ID']
     
     # Check if the Following ID exists in the Vehicle_ID column
-    #leader_row = data[data['Vehicle_ID'] == following_vehicle_id]
-    leader_row = data[(data['Vehicle_ID'] == following_vehicle_id) & (data['Frame_ID'] == current_frame_id)]
+    leader_row = data[data['Vehicle_ID'] == following_vehicle_id]
     
     if not leader_row.empty:
         # Merge the follower and leader row, adding leader data to the follower row
@@ -52,7 +50,6 @@ combined_data.columns = original_columns + leader_columns
 print("Combined Dataset (Follower and Leader):")
 print(combined_data.head())
 
-combined_data = combined_data.head(500)
 
 print("Column names in the dataset:")
 
