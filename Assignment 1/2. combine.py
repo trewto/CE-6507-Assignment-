@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Import the dataset
-csv_file_path = r'dataset.csv'
+csv_file_path = r'dataset.csv'#note , excel is slower than csv
 data = pd.read_csv(csv_file_path)
 
 # Display the first few rows of the dataframe
